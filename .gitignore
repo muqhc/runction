@@ -3,4 +3,4 @@
 /build/
 /runction/build/
 /.idea/
-gradle.properties
+/gradle/
