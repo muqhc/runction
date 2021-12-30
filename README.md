@@ -1,12 +1,12 @@
 # Runction
 
-###_the library for your enjoyment with functions_
+### _the library for your enjoyment with functions_
 
 ---
-###example
+### example
 
 ---
-####runc
+#### runc
 ```kotlin
 val plus = runc<
         Int,
@@ -27,7 +27,7 @@ println( plusTen(4) ) // 10 + 4 = 14
 
 ```
 ---
-####decoration
+#### decoration
 ```kotlin
 val plus = runc<
         Int,
@@ -46,7 +46,7 @@ val plusFourThenPow = plus(4) decorateLeft { it * it }
 println( plusThenPow(5) ) // ( 4 + 5 ) * ( 4 + 5 ) = 81
 ```
 ---
-####bind & runWith
+#### bind & runWith
 ```kotlin
 val plusTwo = { x: Int -> x + 2 }
 val plusTen = { x: Int -> x + 10 }
