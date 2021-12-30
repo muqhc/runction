@@ -32,25 +32,18 @@ println( plusTen(4) ) // 10 + 4 = 14
 val plus = runc<
         Int,
         Runction<Int,Int,Int,Int>,
-        Int, Int
+        Any, Any
         >
 { a ->
-    val outerDecoration = { 
-            it: Int -> decoration(it)
-    }
     runc { b ->
-        decoration(
-            a + b
-        ){
-            outerDecoration( it )
-        }
+        decoration( a+b )
     }
 }
 
 // decoration(it) = it * it 
-val plusThenPow = plus decorateLeft { it * it }
+val plusFourThenPow = plus(4) decorateLeft { it * it }
 
-println( plusThenPow(4)(5) ) // ( 4 + 5 ) * ( 4 + 5 ) = 81
+println( plusThenPow(5) ) // ( 4 + 5 ) * ( 4 + 5 ) = 81
 ```
 ---
 ####bind & runWith
