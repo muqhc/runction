@@ -4,12 +4,7 @@ import io.github.muqhc.runction.Runction
 import io.github.muqhc.runction.*
 
 fun main() {
-    val plus = runc<
-            Int,
-            Runction<Int,Int,Int,Int>,
-            Int, Int
-            >
-    { a ->
+    val plus = runc<Int, Runction<Int,Int,Int,Int>, Int, Int>{ a ->
         val outerDecoration = { it: Int -> decoration(it) }
         runc { b ->
             decoration(
