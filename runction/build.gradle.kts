@@ -33,8 +33,8 @@ publishing {
             name = "central"
 
             credentials {
-                username = project.properties["ossrhUsername"] as? String
-                password = project.properties["ossrhPassword"] as? String
+                username = project.properties["ossrhUsername"]!! as String
+                password = project.properties["ossrhPassword"]!! as String
             }
 
             url = uri(
@@ -49,7 +49,10 @@ publishing {
 
     publications {
         create<MavenPublication>(rootProject.name) {
+
+            groupId = project.properties["group"]!! as String
             artifactId = rootProject.name
+
             from(components["java"])
             artifact(tasks["sourcesJar"])
             artifact(tasks["dokkaJar"])
@@ -70,7 +73,7 @@ publishing {
                     developer {
                         id.set("muqhc")
                         name.set("Muqhc")
-                        email.set("monun1010@gmail.com")
+                        email.set("muqhc07@gmail.com")
                         url.set("https://github.com/muqhc")
                         roles.addAll("developer")
                         timezone.set("Asia/Seoul")
