@@ -21,5 +21,5 @@ fun main() {
 
     val plusTwoThenPow = plusTwo decorateLeft { it * it }
 
-    plusTwoThenPow bindLeft plusTwelve bindRight ::println runWith 5 //<=> println( plusTwoThenPow( plusTwelve( 5 ) )
+    plusTwoThenPow bindLeft plusTwelve bindRight ::println bound 5 //<=> println( plusTwoThenPow( plusTwelve( 5 ) )
 }

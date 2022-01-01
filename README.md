@@ -57,7 +57,7 @@ val plusFourThenPow = plus(4) decorateLeft { it * it }
 println( plusThenPow(5) ) // ( 4 + 5 ) * ( 4 + 5 ) = 81
 ```
 ---
-#### bind & runWith
+#### bind & bound
 ```kotlin
 val plusTwo = { x: Int -> x + 2 }
 val plusTen = { x: Int -> x + 10 }
@@ -66,5 +66,5 @@ val plusTen = { x: Int -> x + 10 }
 val plusTwelve = plusTen bindLeft plusTwo
 
 // println( plusTwelve( 6 ) )
-plusTwelve bindRight ::println runWith 6 // 18
+plusTwelve bindRight ::println bound 6 // 18
 ```
