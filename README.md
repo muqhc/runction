@@ -2,6 +2,17 @@
 
 ### _the library for your enjoyment with functions_
 
+build.gradle.kts
+```kotlin
+repositories {
+    maven(url = "https://s01.oss.sonatype.org/content/groups/public/")
+}
+
+dependencies {
+    implementation("io.github.muqhc:runction:0.1-SNAPSHOT")
+}
+```
+
 ---
 ### example
 
