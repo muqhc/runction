@@ -5,3 +5,4 @@
 /.idea/
 /gradle/
 /gradle.properties
+/.debug/
