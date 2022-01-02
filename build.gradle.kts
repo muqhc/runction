@@ -132,7 +132,11 @@ publishing {
 }
 
 signing {
-    useGpgCmd()
+    useInMemoryPgpKeys(
+        project.properties["signing.keyId"]!! as String,
+        project.properties["signing.key"]!! as String,
+        project.properties["signing.password"]!! as String
+    )
     sign(publishing.publications[rootProject.name])
 }
 
