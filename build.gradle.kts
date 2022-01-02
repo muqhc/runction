@@ -4,6 +4,7 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("org.jetbrains.dokka") version "1.5.0"
     `maven-publish`
+    signing
 }
 
 java {
@@ -12,19 +13,22 @@ java {
     }
 }
 
-group = properties["group"]!! as String
-version = properties["version"]!! as String
+group = project.properties["group"]!! as String
+version = project.properties["version"]!! as String
 
 repositories {
     mavenCentral()
 }
 
 
-nexusPublishing { //defaults to 'project.group'
+nexusPublishing {
     repositories {
-        sonatype {   //custom repository name - 'sonatype' is pre-configured
+        sonatype {
             //for Sonatype Nexus (OSSRH) which is used for The Central Repository
-            stagingProfileId.set("muqhc") //can reduce execution time by even 10 seconds
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            username.set(project.properties["ossrhUsername"]!! as String)
+            password.set(project.properties["ossrhPassword"]!! as String)
         }
     }
 }
@@ -67,11 +71,11 @@ publishing {
         }
 
         maven {
-            name = "central"
+            name = "OSSRH"
 
-            credentials.run {
-                username = properties["ossrhUsername"]!! as String
-                password = properties["ossrhPassword"]!! as String
+            credentials {
+                username = project.properties["ossrhUsername"]!! as String
+                password = project.properties["ossrhPassword"]!! as String
             }
 
             url = uri(
@@ -87,7 +91,7 @@ publishing {
     publications {
         create<MavenPublication>(rootProject.name) {
 
-            groupId = properties["group"]!! as String
+            groupId = project.properties["group"]!! as String
             artifactId = rootProject.name
 
             from(components["java"])
@@ -125,5 +129,14 @@ publishing {
             }
         }
     }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications[rootProject.name])
+}
+
+tasks.withType<io.github.gradlenexus.publishplugin.InitializeNexusStagingRepository> {
+    shouldRunAfter(tasks.withType<Sign>())
 }
 
