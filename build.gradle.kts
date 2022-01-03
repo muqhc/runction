@@ -98,6 +98,8 @@ publishing {
             artifact(tasks["sourcesJar"])
             artifact(tasks["dokkaJar"])
 
+            signing
+
             pom {
                 name.set(rootProject.name)
                 description.set("The library for your enjoyment with functions.")
@@ -132,6 +134,7 @@ publishing {
 }
 
 signing {
+    isRequired = true
     useInMemoryPgpKeys(
         project.properties["signing.keyId"]!! as String,
         project.properties["signing.key"]!! as String,

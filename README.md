@@ -2,17 +2,6 @@
 
 ### _the library for your enjoyment with functions_
 
-build.gradle.kts
-```kotlin
-repositories {
-    maven(url = "https://s01.oss.sonatype.org/content/groups/public/")
-}
-
-dependencies {
-    implementation("io.github.muqhc:runction:0.1-SNAPSHOT")
-}
-```
-
 ---
 ### example
 
@@ -54,7 +43,7 @@ val plus = runc<
 // decoration(it) = it * it 
 val plusFourThenPow = plus(4) decorateLeft { it * it }
 
-println( plusThenPow(5) ) // ( 4 + 5 ) * ( 4 + 5 ) = 81
+println( plusFourThenPow(5) ) // ( 4 + 5 ) * ( 4 + 5 ) = 81
 ```
 ---
 #### bind & bound
@@ -62,9 +51,9 @@ println( plusThenPow(5) ) // ( 4 + 5 ) * ( 4 + 5 ) = 81
 val plusTwo = { x: Int -> x + 2 }
 val plusTen = { x: Int -> x + 10 }
 
-//val plusTwelve = plusTen( plusTwo( x ) )
-val plusTwelve = plusTen bindLeft plusTwo
+//val plusTwelve = { x -> plusTen( plusTwo( x ) ) }
+val plusTwelve = plusTwo composite plusTen //<=> plusTen compositeLeft plusTwo
 
-// println( plusTwelve( 6 ) )
-plusTwelve bindRight ::println bound 6 // 18
+// { x -> println( plusTwelve( x ) ) }.invoke( 6 )
+plusTwelve composite ::println bind 6 // 18
 ```

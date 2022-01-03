@@ -17,9 +17,10 @@ fun main() {
     val plusTen = plus(10)
     val plusTwo = plus(2)
 
-    val plusTwelve = plusTen bindLeft plusTwo
+    val plusTwelve = plusTen composite plusTwo //<=> { x -> plusTwo( plusTen( x ) ) }
 
     val plusTwoThenPow = plusTwo decorateLeft { it * it }
 
-    plusTwoThenPow bindLeft plusTwelve bindRight ::println bound 5 //<=> println( plusTwoThenPow( plusTwelve( 5 ) )
+    plusTwelve composite plusTwoThenPow composite ::println bind 5 //<=> println( plusTwoThenPow( plusTwelve( 5 ) )
+    5 bind plusTwelve bind plusTwoThenPow bind ::println //<=> println( plusTwoThenPow( plusTwelve( 5 ) )
 }
