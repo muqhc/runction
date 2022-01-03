@@ -5,7 +5,7 @@
 ### build.gradle.kts
 ```kotlin
 repositories {
-    maven(url = "https://s01.oss.sonatype.org/content/groups/public/")
+    mavenCentral()
 }
 
 dependencies {
