@@ -3,7 +3,9 @@
 ### _the library for your enjoyment with functions_
 ---
 
-## Gradle
+## add dependency
+
+### Gradle Kotlin DSL
 
 #### build.gradle.kts
 ```kotlin
@@ -15,6 +17,8 @@ dependencies {
     implementation("io.github.muqhc:runction:0.2.0")
 }
 ```
+### the other ways
+* [here](https://search.maven.org/artifact/io.github.muqhc/runction/0.2.0/jar)
 
 ---
 ## example
