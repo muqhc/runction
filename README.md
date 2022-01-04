@@ -1,6 +1,9 @@
 # Runction
 
 ### _the library for your enjoyment with functions_
+---
+
+## Gradle
 
 #### build.gradle.kts
 ```kotlin
@@ -14,7 +17,7 @@ dependencies {
 ```
 
 ---
-### example
+## example
 
 ---
 #### runc
@@ -44,7 +47,7 @@ val plus = runc<Int, Runction<Int,Int,Int,Int>, Any, Any> { a ->
 // decoration(it) = it * it 
 val plusFourThenPow = plus(4) decorateLeft { it * it }
 
-println( plusFourThenPow(5) ) // ( 4 + 5 ) * ( 4 + 5 ) = 81
+println( plusFourThenPow(5) ) // { it * it }( 4 + 5 ) = 81
 ```
 ---
 #### bind & composite
@@ -56,7 +59,7 @@ val plusTen = { x: Int -> x + 10 }
 val plusTwelve = plusTwo composite plusTen //<=> plusTen compositeLeft plusTwo
 
 // { x -> println( plusTwelve( x ) ) }.invoke( 6 )
-plusTwelve composite ::println bind 6 // 18
+plusTwelve composite ::println bind 6 // output: 18
 ```
 ---
 #### bindOn & compositeOn
