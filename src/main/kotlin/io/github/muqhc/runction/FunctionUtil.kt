@@ -10,6 +10,6 @@ infix fun <T,R> ((T) -> R).bind(target: T): R = invoke(target)
 
 infix fun <T,R> T.bind(func: (T) -> R): R = func(this)
 
-infix fun <T,R> ((T) -> R).compositeRight(target: T): R = invoke(target)
+infix fun <T,R> ((T) -> R).bindRight(target: T): R = invoke(target)
 
 infix fun <T,R> T.bindLeft(func: (T) -> R): R = func(this)
