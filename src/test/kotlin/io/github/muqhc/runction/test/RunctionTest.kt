@@ -23,4 +23,17 @@ fun main() {
 
     plusTwelve composite plusTwoThenPow composite ::println bind 5 //<=> println( plusTwoThenPow( plusTwelve( 5 ) )
     5 bind plusTwelve bind plusTwoThenPow bind ::println //<=> println( plusTwoThenPow( plusTwelve( 5 ) )
+
+    val modulo = runc<Int,Runction<Int,Boolean,Boolean,Boolean>,Int,Int> { b ->
+        runc { a ->
+            a % b == 0
+        }
+    }
+
+    val isOdd = modulo(2) compositeOn { not() }
+
+    0..9 bindOn
+            { toList() } bindOn
+            { this::filter bind isOdd } bind ::println
+
 }

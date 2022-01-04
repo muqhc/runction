@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.muqhc:runction:0.1.0")
+    implementation("io.github.muqhc:runction:0.2.0")
 }
 ```
 
@@ -19,12 +19,7 @@ dependencies {
 ---
 #### runc
 ```kotlin
-val plus = runc<
-        Int,
-        Runction<Int,Int,Any,Any>,
-        Any, Any
-        >
-{ a ->
+val plus = runc<Int, Runction<Int,Int,Any,Any>, Any, Any> { a ->
     runc { b ->
         a+b
     }
@@ -40,12 +35,7 @@ println( plusTen(4) ) // 10 + 4 = 14
 ---
 #### decoration
 ```kotlin
-val plus = runc<
-        Int,
-        Runction<Int,Int,Int,Int>,
-        Any, Any
-        >
-{ a ->
+val plus = runc<Int, Runction<Int,Int,Int,Int>, Any, Any> { a ->
     runc { b ->
         decoration( a+b )
     }
@@ -67,4 +57,20 @@ val plusTwelve = plusTwo composite plusTen //<=> plusTen compositeLeft plusTwo
 
 // { x -> println( plusTwelve( x ) ) }.invoke( 6 )
 plusTwelve composite ::println bind 6 // 18
+```
+---
+#### bindOn & compositeOn
+```kotlin
+val modulo = runc<Int,Runction<Int,Boolean,Boolean,Boolean>,Int,Int> { b ->
+    runc { a ->
+        a % b == 0
+    }
+}
+
+val isOdd = modulo(2) compositeOn { not() }
+
+0..9 bindOn
+        { toList() } bindOn
+        { this::filter bind isOdd } bind ::println
+//output: [1, 3, 5, 7, 9]
 ```

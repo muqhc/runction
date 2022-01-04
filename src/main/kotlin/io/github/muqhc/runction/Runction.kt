@@ -10,5 +10,11 @@ class Runction<T, R, DecoT, DecoR>(body: RunctionRaw<T, R, DecoT, DecoR>.(T) -> 
 infix fun <T, R, RuncT, RuncR> ((T) -> R).decorateRight(runc: Runction<RuncT, RuncR, T, R>) =
     runc decorateLeft this
 
+infix fun <T, R, RuncT, RuncR> ((T) -> R).decorate(runc: Runction<RuncT, RuncR, T, R>) =
+    runc decorateLeft this
+
+infix fun <T, R, DecoT, DecoR> Runction<T,R,DecoT,DecoR>.decorate(func: (DecoT) -> DecoR) =
+    this decorateLeft func
+
 fun <T, R, DecoT, DecoR> runc(body: RunctionRaw<T, R, DecoT, DecoR>.(T) -> R) =
     Runction(body)
