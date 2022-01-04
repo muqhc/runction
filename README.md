@@ -2,7 +2,7 @@
 
 ### _the library for your enjoyment with functions_
 
-### build.gradle.kts
+#### build.gradle.kts
 ```kotlin
 repositories {
     mavenCentral()
