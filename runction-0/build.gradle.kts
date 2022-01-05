@@ -5,7 +5,7 @@ plugins {
 }
 
 group = project.properties["group"]!! as String
-version = project.properties["version0"]!! as String
+version = project.properties["version-0"]!! as String
 
 tasks {
     create<Jar>("sourcesJar") {

@@ -1,5 +1,3 @@
-package io.github.muqhc.runction.test
-
 import io.github.muqhc.runction.*
 
 fun main() {
