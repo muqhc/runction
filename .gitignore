@@ -1,9 +1,7 @@
 # Project exclude paths
 /.gradle/
-/build/
-/runction/build/
 /.idea/
 /gradle/
 /gradle.properties
 /.debug/
-
+build/
