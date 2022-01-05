@@ -9,9 +9,6 @@ java {
     }
 }
 
-group = project.properties["group"]!! as String
-version = project.properties["version"]!! as String
-
 allprojects {
     repositories {
         mavenCentral()
