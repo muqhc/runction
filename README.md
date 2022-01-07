@@ -20,6 +20,12 @@ dependencies {
 ### the other ways
 * [here](https://search.maven.org/artifact/io.github.muqhc/runction/0.2.0/jar)
 
+## and use !
+
+#### Hello.kt
+```kotlin
+import io.github.muqhc.*
+```
 ---
 ## example
 
