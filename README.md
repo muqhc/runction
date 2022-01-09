@@ -24,7 +24,7 @@ dependencies {
 
 #### Hello.kt
 ```kotlin
-import io.github.muqhc.*
+import io.github.muqhc.runction.*
 ```
 ---
 ## example
