@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.muqhc:runction:0.2.0")
+    implementation("io.github.muqhc:runction:0.3.0")
 }
 ```
 ### the other ways
@@ -86,4 +86,13 @@ val isOdd = modulo(2) compositeOn { not() }
         { toList() } bindOn
         { this::filter bind isOdd } bind ::println
 //output: [1, 3, 5, 7, 9]
+```
+---
+#### boolean expression
+```kotlin
+(9 >= 8) <String> {
+        ifTrue { "It's True!" }
+        ifFalse { "It's false...." }
+} bind ::println
+//output: It's True!
 ```
