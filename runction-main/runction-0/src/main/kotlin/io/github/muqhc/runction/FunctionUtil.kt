@@ -22,6 +22,23 @@ infix fun <T,R> ((T) -> R).bindLeft(target: T): R = invoke(target)
 
 infix fun <T,R> T.bindRight(func: (T) -> R): R = func(this)
 
+
 infix fun <R> Boolean.onTrue(func: () -> R): R? = if (this) func() else null
 
 infix fun <R> Boolean.onFalse(func: () -> R): R? = if (this) null else func()
+
+
+class BooleanExpression<R>(private val boolean: Boolean) {
+
+    internal val result: R
+        get() = if (boolean) funcOnTrue() else funcOnFalse()
+
+    private lateinit var funcOnFalse: () -> R
+    private lateinit var funcOnTrue: () -> R
+
+    fun onTrue(func: () -> R) { funcOnTrue = func }
+    fun onFalse(func: () -> R) { funcOnFalse = func }
+
+}
+
+fun <R> Boolean.invoke(init: BooleanExpression<R>.() -> Unit): R = BooleanExpression<R>(this).apply(init).result
