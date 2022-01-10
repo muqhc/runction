@@ -41,4 +41,4 @@ class BooleanExpression<R>(private val boolean: Boolean) {
 
 }
 
-fun <R> Boolean.invoke(init: BooleanExpression<R>.() -> Unit): R = BooleanExpression<R>(this).apply(init).result
+operator fun <R> Boolean.invoke(init: BooleanExpression<R>.() -> Unit): R = BooleanExpression<R>(this).apply(init).result

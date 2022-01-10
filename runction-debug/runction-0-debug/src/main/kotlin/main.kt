@@ -34,4 +34,9 @@ fun main() {
             { toList() } bindOn
             { this::filter bind isOdd } bind ::println
 
+    true <Int> {
+        onTrue { 1 }
+        onFalse { 0 }
+    }
+
 }
