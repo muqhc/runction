@@ -90,9 +90,9 @@ val isOdd = modulo(2) compositeOn { not() }
 ---
 #### boolean expression
 ```kotlin
-(9 >= 8) <String> {
-        ifTrue { "It's True!" }
-        ifFalse { "It's false...." }
-} bind ::println
+true <Unit> {
+    ifTrue { "It's True!" bind ::println }
+    ifFalse { "It's False!" bind ::println }
+}
 //output: It's True!
 ```
