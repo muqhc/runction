@@ -35,8 +35,8 @@ fun main() {
             { this::filter bind isOdd } bind ::println
 
     true <Int> {
-        onTrue { 1 }
-        onFalse { 0 }
-    }
+        ifTrue { 1 }
+        ifFalse { 0 }
+    } bind ::println
 
 }
