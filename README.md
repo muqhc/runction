@@ -18,7 +18,7 @@ dependencies {
 }
 ```
 ### the other ways
-* [here](https://search.maven.org/artifact/io.github.muqhc/runction/0.2.0/jar)
+* [here](https://search.maven.org/artifact/io.github.muqhc/runction/0.3.0/jar)
 
 ## and use !
 
